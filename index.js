@@ -1,0 +1,1 @@
+console.log('meu ambiente',process.env.NODE_ENV);

@@ -1,0 +1,24 @@
+{
+  "name": "test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "NODE_ENV=prod node index.js",
+    "start-dev": "NODE_ENV=dev node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RicardoSLopes/api-node.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RicardoSLopes/api-node/issues"
+  },
+  "homepage": "https://github.com/RicardoSLopes/api-node#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
