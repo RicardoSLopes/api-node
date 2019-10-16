@@ -12,16 +12,15 @@ const db = firebaseApp.firestore();
 
 
 //JWT
-const config = require('./config/default');
-const jwt = require('jsonwebtoken');
-
-
-
 const bodyParser = require('body-parser');
 
 const app = express();
 
 app.use(bodyParser.json());
+
+const createToken = require('./utils/createToken')
+const verifyToken = require('./middlewares/verifyToken')
+
 
 app.post('/auth', (request, response, next) =>{
     console.log(request.body);
@@ -36,24 +35,14 @@ app.post('/auth', (request, response, next) =>{
             .status(200)
             .send({ 
                 code: 'not_found', 
-                error: 'user not found'
-        });
+                message: 'user not found'
+            });
         }
 
         //auto assign
         const [{id}] = users.docs;
-
-        const token = jwt.sign(
-            {id},
-            config.secret,
-            {expiresIn: 300}
-             );
-
-        response.json({token});
-
+        response.json({ token: createToken({id})});
     })
-
-
     .catch(err => {
         response
             .sendStatus(500);
@@ -64,28 +53,25 @@ app.post('/auth', (request, response, next) =>{
 });
 
 
-
-
-
-
-app.get('/users/:id', (request, response, next) => {
+app.get('/users/:id', verifyToken, (request, response, next) => {
     const id = request.params.id;
     
     db.collection('users').doc(id).get()
-    .then(user =>{
-       if(!user.exists){
-           response
-                .sendStatus(404); 
-            //.send({ message: 'Not Found' });
-       }
-       response.json(user.data());
-    })
-    .catch(err => {
-        response
-            .sendStatus(500);
-        console.log(err);
-        console.log('Error getting document', err);
-    });
+        .then(user => {
+            if(!user.exists) {
+                response
+                    .sendStatus(404);
+                    //.send({ message: 'No Content' });
+            }
+
+            response.json(user.data());
+        })
+        .catch(err => {
+            response
+                .sendStatus(500);
+            console.log(err);
+            console.log('Error getting document', err);
+        });
 });
 
 
