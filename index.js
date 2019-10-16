@@ -11,7 +11,62 @@ const db = firebaseApp.firestore();
 
 
 
+//JWT
+const config = require('./config/default');
+const jwt = require('jsonwebtoken');
+
+
+
+const bodyParser = require('body-parser');
+
 const app = express();
+
+app.use(bodyParser.json());
+
+app.post('/auth', (request, response, next) =>{
+    console.log(request.body);
+
+    db.collection('users')
+    .where('email', '==', request.body.email)
+    .where('password', '==', request.body.password)
+    .get()
+    .then(users => {
+        if(users.docs.length === 0){
+            return response
+            .status(200)
+            .send({ 
+                code: 'not_found', 
+                error: 'user not found'
+        });
+        }
+
+        //auto assign
+        const [{id}] = users.docs;
+
+        const token = jwt.sign(
+            {id},
+            config.secret,
+            {expiresIn: 300}
+             );
+
+        response.json({token});
+
+    })
+
+
+    .catch(err => {
+        response
+            .sendStatus(500);
+        console.log(err);
+        console.log('Error getting document', err);
+    });
+
+});
+
+
+
+
+
 
 app.get('/users/:id', (request, response, next) => {
     const id = request.params.id;
