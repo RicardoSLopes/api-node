@@ -1,13 +1,15 @@
 const UsersModel = require('../models/Users');
 const usersModel = new UsersModel();
 
+const createToken = require('../utils/createToken');
+
 class Auth{
    static post(request, response, next){
 
     const email = request.body.email;
     const password = request.body.password;
 
-        usersModel.list(email, password)
+        usersModel.post(email, password)
         .then(users => {
             if(users.docs.length === 0){
                 return response
@@ -19,8 +21,8 @@ class Auth{
             }
 
             //auto assign
-            const [{id}] = users.docs;
-            response.json({ token: createToken({id})});
+            const [{ id }] = users.docs;
+            response.json({ token: createToken({ id })});
         })
         .catch(err => {
             response
