@@ -2,17 +2,17 @@
 const express = require('express');
 
 //JWT
-
 const bodyParser = require('body-parser');
 const routes = require('./routes');
 
 const app = express();
 
 app.use(bodyParser.json());
+// routes/index
 app.use(routes);
 
 const Auth = require('./controllers/Auth');
-app.post('/auth', Auth.post);
+app.post('/auth',Auth.post);
 
 
 // app.get('/users', (request, response, next) =>{
@@ -50,16 +50,17 @@ app.listen(port, () => {
 });
 
 
-const createToken = require('./utils/createToken')
-const verifyToken = require('./middlewares/verifyToken')
+// const createToken = require('./utils/createToken')
+// const verifyToken = require('./middlewares/verifyToken')
 
 
-
+// Users
 const Users = require('./controllers/Users');
 app.get('/users/:id', /*verifyToken,*/ Users.get);
 
-
-
+//ShoppingList
+const ShoppingList = require('./controllers/ShoppingList');
+app.get('/ShoppingList/:id', /*verifyToken,*/ ShoppingList.get);
 
 
 

@@ -4,33 +4,33 @@ const cacheManager = require('cache-manager');
 const { cache } = require('../config/default'); // destruct: https://medium.com/podiihq/destructuring-objects-in-javascript-4de5a3b0e4cb
 
 //model
-const UsersModel = require('../models/Users');
-const usersModel = new UsersModel();
+const ShoppingListModel = require('../models/ShoppingList');
+const shoppingListModel = new ShoppingListModel();
 
 
 // instancia da biblioteca de cache
 const memoryCache = cacheManager.caching(cache);
 
-class Users{
+class ShoppingList{
     static get(request, response){
         const id = request.params.id;
-        const key = `user_${id}`;
+        const key = `product_${id}`;
 
         memoryCache.get(key, (err, result) => {
             if (result){
                 return response.json(result);
             }
             
-            usersModel.get(id)
-                .then(user => {
-                    if(!user.exists) {
+            shoppingListModel.get(id)
+                .then(product => {
+                    if(!product.exists) {
                         response
                         .sendStatus(204);
                     }
-                    const userData = user.data();
+                    const productData = product.data();
 
-                    memoryCache.set(key, userData);
-                    response.json(userData);
+                    memoryCache.set(key, productData);
+                    response.json(productData);
                 })
                 .catch(err => {
                     response
@@ -42,19 +42,6 @@ class Users{
         });
     }
 
-    static update(request, response) {
-        const id = request.params.id;
-        const key = `user_${id}`;
-        memoryCache.ref('users/' + id).set({
-            name: "Ricardo",
-            email: "ricardo@gmail.com",
-            password : "123"
-        });
-    }
-
-    // static delete(request, response) {
-        // request -> params e o body
-    // }
 }
 
-module.exports = Users;
+module.exports = ShoppingList;

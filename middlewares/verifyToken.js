@@ -2,12 +2,27 @@ const jwt = require('jsonwebtoken');
 const config = require('../config/default');
 
 
-module.exports = (request, response, next) =>{
-    const token = request.headers['x-access-token'];
-    console.log(request.headers);
-    
+module.exports = (req, res, next) =>{
+    const token = req.headers['x-access-token'];
+
+ 
+    // let id = req.params.id
+ 
+    // if (!ObjectId.isValid(id)) {
+    //   return res.status(404).send()
+    // }
+   
+    // if(res.status === 404){
+    //     res
+    //         .status(404)
+    //         .send({ 
+    //             code: "not_found",
+    //             message: "Not found"
+    //         });
+    // }
+
     if(!token){
-        response
+        res
             .status(401)
             .send({
                 code: 'not_authorized',
@@ -17,9 +32,12 @@ module.exports = (request, response, next) =>{
     
     jwt.verify(token, config.secret, (error, decoded) => {
         if (error){
-            return response
+            return res
                 .status(500)
-                .send({error});
+                .send({
+                    auth: false, 
+                    message: 'Failed to authenticate token.'
+                });
         }
 
         console.log(decoded);
