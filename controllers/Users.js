@@ -25,7 +25,11 @@ class Users{
                 .then(user => {
                     if(!user.exists) {
                         response
-                        .sendStatus(204);
+                        .status(404)
+                        .send({
+                            code: 404, 
+                            message: 'User not found.'
+                        });
                     }
                     const userData = user.data();
 
@@ -34,27 +38,14 @@ class Users{
                 })
                 .catch(err => {
                     response
-                        .sendStatus(500);
-                    console.log(err);
-                    console.log('Error getting document', err);
-                });
-            
+                    .status(500)
+                    .send({
+                        code: 500, 
+                        message: 'Internal Server Error.'
+                    });
+                });            
         });
     }
-
-    static update(request, response) {
-        const id = request.params.id;
-        const key = `user_${id}`;
-        memoryCache.ref('users/' + id).set({
-            name: "Ricardo",
-            email: "ricardo@gmail.com",
-            password : "123"
-        });
-    }
-
-    // static delete(request, response) {
-        // request -> params e o body
-    // }
 }
 
 module.exports = Users;

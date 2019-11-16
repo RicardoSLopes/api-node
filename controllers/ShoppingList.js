@@ -1,14 +1,9 @@
 const cacheManager = require('cache-manager');
+const { cache } = require('../config/default');
 
-// config
-const { cache } = require('../config/default'); // destruct: https://medium.com/podiihq/destructuring-objects-in-javascript-4de5a3b0e4cb
-
-//model
 const ShoppingListModel = require('../models/ShoppingList');
 const shoppingListModel = new ShoppingListModel();
 
-
-// instancia da biblioteca de cache
 const memoryCache = cacheManager.caching(cache);
 
 class ShoppingList{
@@ -25,7 +20,11 @@ class ShoppingList{
                 .then(product => {
                     if(!product.exists) {
                         response
-                        .sendStatus(204);
+                        .status(404)
+                        .send({
+                            code: 404, 
+                            message: 'Product not found.'
+                        });
                     }
                     const productData = product.data();
 
@@ -34,14 +33,14 @@ class ShoppingList{
                 })
                 .catch(err => {
                     response
-                        .sendStatus(500);
-                    console.log(err);
-                    console.log('Error getting document', err);
-                });
-            
+                    .status(500)
+                    .send({
+                        code: 500, 
+                        message: 'Internal Server Error.'
+                    });
+                }); 
         });
     }
-
 }
 
 module.exports = ShoppingList;

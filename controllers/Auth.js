@@ -1,6 +1,5 @@
 const UsersModel = require('../models/Users');
 const usersModel = new UsersModel();
-
 const createToken = require('../utils/createToken');
 
 class Auth{
@@ -19,20 +18,15 @@ class Auth{
                     message: 'user not found'
                 });
             }
-
-            //auto assign
+            
             const [{ id }] = users.docs;
             response.json({ token: createToken({ id })});
         })
         .catch(err => {
             response
                 .sendStatus(500);
-            console.log(err);
-            console.log('Error getting document', err);
         });
    }
 }
 
 module.exports = Auth;
-
-
