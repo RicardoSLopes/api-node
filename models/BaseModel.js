@@ -3,8 +3,8 @@ const firebaseConfig = require('../config/firebase');
 
 const firebaseApp = firebase.initializeApp(firebaseConfig);
 
-class BaseModel{
-    constructor(){
+class BaseModel {
+    constructor() {
         this.db = firebaseApp.firestore();
     }
 }

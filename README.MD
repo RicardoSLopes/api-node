@@ -1,4 +1,4 @@
-# API Usuários e lista de produtos
+# API de usuários com itens de compras
 
 ## Sobre
 
@@ -22,13 +22,15 @@ $ npm run serve
 
 ## Podemos utilizar nos seguintes endereços da API:
 
-- localhost:3000/users/
-- localhost:3000/ShoppingList/
+- localhost:3000/users
+- localhost:3000/users/[id_do_usuario]
+- localhost:3000/ShoppingList
+- localhost:3000/ShoppingList/[id_do_produto]
 
 O header deverá conter a chave "x-access-token" sem as aspas e o valor deverá ser o token gerado e outra chave "Content-Type" sem as aspas com o valor "application/json" sem as aspas.
 
 ---
-**IMPORTANTE: No final dos endereços, informar o ID do usuário na URL de usuário e o ID do item da lista de compra na URL de lista de compra.**
+**IMPORTANTE: Para retornar um usuário específico ou um item na lista, basta informar o ID do mesmo ao final da URI.**
 
 # Versão
 1.0.0

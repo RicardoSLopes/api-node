@@ -6,25 +6,25 @@ const shoppingListModel = new ShoppingListModel();
 
 const memoryCache = cacheManager.caching(cache);
 
-class ShoppingList{
-    static get(request, response){
+class ShoppingList {
+    static get(request, response) {
         const id = request.params.id;
         const key = `product_${id}`;
 
         memoryCache.get(key, (err, result) => {
-            if (result){
+            if (result) {
                 return response.json(result);
             }
-            
+
             shoppingListModel.get(id)
                 .then(product => {
-                    if(!product.exists) {
+                    if (!product.exists) {
                         response
-                        .status(404)
-                        .send({
-                            code: 404, 
-                            message: 'Product not found.'
-                        });
+                            .status(404)
+                            .send({
+                                code: 404,
+                                message: 'Product not found.'
+                            });
                     }
                     const productData = product.data();
 
@@ -33,14 +33,33 @@ class ShoppingList{
                 })
                 .catch(err => {
                     response
-                    .status(500)
-                    .send({
-                        code: 500, 
-                        message: 'Internal Server Error.'
-                    });
-                }); 
+                        .status(500)
+                        .send({
+                            code: 500,
+                            message: 'Internal Server Error.'
+                        });
+                });
         });
     }
-}
 
+    static list(request, response) {
+        shoppingListModel.list()
+            .then(shoppingList => response.json(
+                shoppingList.docs.map(shoppingList => (
+                    {
+                        ...shoppingList.data(),
+                        id: shoppingList.id
+                    }
+                ))
+            ))
+            .catch(err => {
+                response
+                    .status(500)
+                    .send({
+                        code: 500,
+                        message: 'Internal server error'
+                    })
+            })
+    }
+}
 module.exports = ShoppingList;

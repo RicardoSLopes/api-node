@@ -5,6 +5,6 @@ module.exports = (data, expiresIn = 43200) => {
     return jwt.sign(
         data,
         config.secret,
-        {expiresIn}
+        { expiresIn }
     );
 }
