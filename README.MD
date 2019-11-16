@@ -34,7 +34,7 @@ O header deverá conter a chave "x-access-token" sem as aspas e o valor deverá 
 1.0.0
 
 # Autores
-* **Gustavo Caspirro** - [andreamll](https://github.com/GustavoCaspirro)
-* **Ricardo Santana** - [arthurproducer](https://github.com/RicardoSLopes)
-* **Lucas Barcelos** - [andreamll](https://github.com/LucasBarcelos)
-* **Bruno Santos** - [arthurproducer](https://github.com/brunoluizcs)
+* **Gustavo Caspirro** - [Gustavo Caspirro](https://github.com/GustavoCaspirro)
+* **Ricardo Santana** - [Ricardo Santana Lopes](https://github.com/RicardoSLopes)
+* **Lucas Barcelos** - [Lucas Barcelos](https://github.com/LucasBarcelos)
+* **Bruno Santos** - [Bruno Santos](https://github.com/brunoluizcs)
