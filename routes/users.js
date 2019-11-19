@@ -8,4 +8,7 @@ router.get('/:id', users.get);
 const allUsers = require('../controllers/Users');
 router.get('', allUsers.list);
 
+const newUser = require('../controllers/Users');
+router.post('', newUser.newUser);
+
 module.exports = router;

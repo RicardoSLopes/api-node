@@ -24,6 +24,16 @@ class Users extends BaseModel {
             .where('password', '==', password)
             .get();
     }
+
+    newUser(age, email, name, password){
+        //this.db.ref('../controllers/Users' /* + userId*/).set({
+        this.db.collection("users").doc().set({
+            age: age,
+            name: name,
+            email: email,
+            password : password
+          });
+    }
 }
 
 module.exports = Users;
