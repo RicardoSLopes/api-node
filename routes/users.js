@@ -4,11 +4,7 @@ const router = express.Router();
 
 const users = require('../controllers/Users');
 router.get('/:id', users.get);
-
-const allUsers = require('../controllers/Users');
-router.get('', allUsers.list);
-
-const newUser = require('../controllers/Users');
-router.post('', newUser.newUser);
+router.get('/', users.list);
+router.post('/', users.create);
 
 module.exports = router;

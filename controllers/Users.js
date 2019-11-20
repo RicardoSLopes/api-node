@@ -62,19 +62,17 @@ class Users {
                     })
             })
     }
-    static newUser(request, response){
-        const age = request.body.age;
-        const email = request.body.email;
-        const name = request.body.name;
-        const password = request.body.password;
+
+    static create({ body }, response){
+        const { age, email, name, password } = body;
 
         return usersModel.newUser(age, email, name, password)
-        .then(function() {
-            console.log("Document successfully written!");
-        })
-        .catch(function(error) {
-            console.error("Error writing document: ", error);
-        })
+            .then(function() {
+                console.log("Document successfully written!");
+            })
+            .catch(function(error) {
+                console.error("Error writing document: ", error);
+            })
     }
 }
 

@@ -7,7 +7,7 @@ const shoppingList = require('./shoppingList');
 
 const router = express.Router();
 
- router.use('/users', verifyToken, users);
+router.use('/users', verifyToken, users);
 router.use('/shoppingList', verifyToken, shoppingList);
 
 module.exports = router;

@@ -5,7 +5,7 @@ module.exports = (req, res, next) => {
     const token = req.headers['x-access-token'];
 
     if (!token) {
-        res
+        return res
             .status(401)
             .send({
                 code: 'not_authorized',
@@ -22,7 +22,7 @@ module.exports = (req, res, next) => {
                     message: 'Failed to authenticate token.'
                 });
         }
-    })
 
-    next();
+        next();
+    })
 }
