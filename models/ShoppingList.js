@@ -4,6 +4,7 @@ class ShoppingList extends BaseModel {
     constructor() {
         super();
     }
+    
     get(id) {
         return this.db
             .collection('shoppingList')

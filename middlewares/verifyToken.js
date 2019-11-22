@@ -5,12 +5,12 @@ module.exports = (req, res, next) => {
     const token = req.headers['x-access-token'];
 
     if (!token) {
-        res
+        return res
             .status(401)
             .send({
                 code: 'not_authorized',
                 message: 'Not authorized'
-            });
+        });
     }
 
     jwt.verify(token, config.secret, (error, decoded) => {
@@ -20,9 +20,8 @@ module.exports = (req, res, next) => {
                 .send({
                     auth: false,
                     message: 'Failed to authenticate token.'
-                });
+            });
         }
+        next();
     })
-
-    next();
 }

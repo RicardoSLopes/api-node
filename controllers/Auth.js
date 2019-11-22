@@ -3,11 +3,10 @@ const usersModel = new UsersModel();
 const createToken = require('../utils/createToken');
 
 class Auth {
-    static post(request, response, next) {
+    static post({ body }, response, next) {
 
-        const email = request.body.email;
-        const password = request.body.password;
-
+        const {email, password} = body;
+        
         usersModel.post(email, password)
             .then(users => {
                 if (users.docs.length === 0) {
@@ -24,7 +23,11 @@ class Auth {
             })
             .catch(err => {
                 response
-                    .sendStatus(500);
+                .status(500)
+                .send({
+                    code: 500,
+                    message: 'Internal Server Error.'
+                });
             });
     }
 }
