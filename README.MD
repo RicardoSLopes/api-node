@@ -42,7 +42,8 @@ https://api.node-rsl.herokuapp.com
 1.0.0
 
 # Autores 
-* **Gustavo Caspirro** - [Gustavo Caspirro](https://github.com/GustavoCaspirro)
-* **Ricardo Santana** - [Ricardo Santana Lopes](https://github.com/RicardoSLopes)
-* **Lucas Barcelos** - [Lucas Barcelos](https://github.com/LucasBarcelos)
+
 * **Bruno Santos** - [Bruno Santos](https://github.com/brunoluizcs)
+* **Gustavo Caspirro** - [Gustavo Caspirro](https://github.com/GustavoCaspirro)
+* **Lucas Barcelos** - [Lucas Barcelos](https://github.com/LucasBarcelos)
+* **Ricardo Santana** - [Ricardo Santana Lopes](https://github.com/RicardoSLopes
