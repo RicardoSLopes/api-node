@@ -20,7 +20,7 @@ $ npm run serve
 ## URL para gerar o token
 - localhost:3000/auth
 - o body deve estar no formato JSON e deverá conter as chaves "email" e "password" sem as aspas
-**Obs: o token de validação tem duração de 12 horas**
+- **Obs: o token de validação tem duração de 12 horas**
 
 ## Podemos utilizar nos seguintes endereços da API:
 
