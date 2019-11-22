@@ -22,10 +22,6 @@ module.exports = (req, res, next) => {
                     message: 'Failed to authenticate token.'
             });
         }
-<<<<<<< HEAD
-=======
-
->>>>>>> 6f475e6d72b81af62d1ea93de0e372af243933fb
         next();
     })
 }
