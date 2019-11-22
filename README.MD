@@ -33,10 +33,10 @@ O header deverá conter a chave "x-access-token" sem as aspas e o valor deverá 
 
 ---
 **IMPORTANTE: Para retornar um usuário específico ou um item na lista, basta informar o ID do mesmo ao final da URI.
-Caso não consiga rodar o projeto em sua máquina, substituir o endpoint pelo link abaixo.
+Caso não consiga rodar o projeto em sua máquina, substituir o endpoint pelo link abaixo.**
 ```
 https://api.node-rsl.herokuapp.com
-```**
+```
 
 # Versão
 1.0.0
