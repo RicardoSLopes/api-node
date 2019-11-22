@@ -62,6 +62,18 @@ class Users {
                     })
             })
     }
+
+    static create({ body }, response){
+        const { age, email, name, password } = body;
+
+        return usersModel.newUser(age, email, name, password)
+            .then(function() {
+                console.log("Document successfully written!");
+            })
+            .catch(function(error) {
+                console.error("Error writing document: ", error);
+            })
+    }
 }
 
 module.exports = Users;
