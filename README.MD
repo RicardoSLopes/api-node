@@ -7,6 +7,11 @@
 
 ### Primeiros passos
 
+- Para testar a API recomendamos a utilização do Postman que pode ser baixado no link abaixo:
+```
+https://www.getpostman.com/downloads/
+```
+
 ### Clonar o projeto
 ```
 $ git clone projetoClonado
