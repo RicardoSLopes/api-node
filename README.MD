@@ -5,6 +5,8 @@
 - API retornará informações de usuários e de itens de compras
 - Para ter acesso a estas informações é necessário utilizar um token de validação
 
+### Primeiros passos
+
 ### Clonar o projeto
 ```
 $ git clone projetoClonado
@@ -30,7 +32,11 @@ $ npm run serve
 O header deverá conter a chave "x-access-token" sem as aspas e o valor deverá ser o token gerado e outra chave "Content-Type" sem as aspas com o valor "application/json" sem as aspas.
 
 ---
-**IMPORTANTE: Para retornar um usuário específico ou um item na lista, basta informar o ID do mesmo ao final da URI.**
+**IMPORTANTE: Para retornar um usuário específico ou um item na lista, basta informar o ID do mesmo ao final da URI.
+Caso não consiga rodar o projeto em sua máquina, substituir o endpoint pelo link abaixo.
+```
+https://api.node-rsl.herokuapp.com
+```**
 
 # Versão
 1.0.0
