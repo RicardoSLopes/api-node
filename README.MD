@@ -46,4 +46,4 @@ https://api.node-rsl.herokuapp.com
 * **Bruno Santos** - [Bruno Santos](https://github.com/brunoluizcs)
 * **Gustavo Caspirro** - [Gustavo Caspirro](https://github.com/GustavoCaspirro)
 * **Lucas Barcelos** - [Lucas Barcelos](https://github.com/LucasBarcelos)
-* **Ricardo Santana** - [Ricardo Santana Lopes](https://github.com/RicardoSLopes
+* **Ricardo Santana** - [Ricardo Santana Lopes](https://github.com/RicardoSLopes)
